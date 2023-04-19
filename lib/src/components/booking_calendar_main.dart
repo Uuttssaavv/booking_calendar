@@ -20,6 +20,7 @@ class BookingCalendarMain extends StatefulWidget {
     required this.getBookingStream,
     required this.convertStreamResultToDateTimeRanges,
     required this.uploadBooking,
+    required this.startDate,
     this.bookingExplanation,
     this.bookingGridCrossAxisCount,
     this.bookingGridChildAspectRatio,
@@ -56,6 +57,7 @@ class BookingCalendarMain extends StatefulWidget {
       uploadBooking;
   final List<DateTimeRange> Function({required dynamic streamResult})
       convertStreamResultToDateTimeRanges;
+  final DateTime startDate;
 
   ///Customizable
   final Widget? bookingExplanation;
@@ -114,7 +116,7 @@ class _BookingCalendarMainState extends State<BookingCalendarMain> {
     controller.selectFirstDayByHoliday(startOfDay, endOfDay);
   }
 
-  CalendarFormat _calendarFormat = CalendarFormat.twoWeeks;
+  CalendarFormat _calendarFormat = CalendarFormat.month;
 
   late DateTime _selectedDay;
   late DateTime _focusedDay;
@@ -138,7 +140,7 @@ class _BookingCalendarMainState extends State<BookingCalendarMain> {
           ? now.add(Duration(days: getFirstMissingDay(now.weekday)))
           : now;
     } else {
-      return DateTime.now();
+      return widget.startDate;
     }
   }
 

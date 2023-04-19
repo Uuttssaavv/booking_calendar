@@ -153,6 +153,7 @@ class BookingCalendar extends StatelessWidget {
           bookingService: bookingService, pauseSlots: pauseSlots),
       child: BookingCalendarMain(
         key: key,
+        startDate: bookingService.bookingStart,
         getBookingStream: getBookingStream,
         uploadBooking: uploadBooking,
         bookingButtonColor: bookingButtonColor,
