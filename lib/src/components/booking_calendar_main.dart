@@ -116,7 +116,7 @@ class _BookingCalendarMainState extends State<BookingCalendarMain> {
     controller.selectFirstDayByHoliday(startOfDay, endOfDay);
   }
 
-  CalendarFormat _calendarFormat = CalendarFormat.month;
+  CalendarFormat _calendarFormat = CalendarFormat.week;
 
   late DateTime _selectedDay;
   late DateTime _focusedDay;
@@ -205,6 +205,9 @@ class _BookingCalendarMainState extends State<BookingCalendarMain> {
                           DateTime.now().add(const Duration(days: 1000)),
                       focusedDay: _focusedDay,
                       calendarFormat: _calendarFormat,
+                      availableCalendarFormats: const {
+                        CalendarFormat.week: 'Week'
+                      },
                       calendarStyle:
                           const CalendarStyle(isTodayHighlighted: true),
                       selectedDayPredicate: (day) {
